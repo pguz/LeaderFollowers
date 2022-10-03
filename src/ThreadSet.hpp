@@ -1,11 +1,11 @@
 #ifndef THREADSET_HPP_
 #define THREADSET_HPP_
 
-#include <boost/thread.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/thread.hpp>
 #include <boost/thread/tss.hpp>
-#include "Reactor.hpp"
 #include "Handle.hpp"
+#include "Reactor.hpp"
 
 namespace mt4cpp {
 	

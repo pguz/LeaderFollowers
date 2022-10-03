@@ -1,8 +1,8 @@
 #ifndef BOOSTCLIENT_HPP_
 #define BOOSTCLIENT_HPP_
 
-#include <boost/asio.hpp>
 #include <boost/array.hpp>
+#include <boost/asio.hpp>
 
 using boost::asio::ip::udp;
 

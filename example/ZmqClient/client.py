@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import argparse
 import zmq
-import base64
 
 parser = argparse.ArgumentParser()
 parser.add_argument("client_id", help = "client identificator", type = str)

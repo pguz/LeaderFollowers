@@ -1,9 +1,9 @@
 #ifndef HANDLEBOOST_HPP_
 #define HANDLEBOOST_HPP_
 
-#include "mt4cpp/Handle.hpp"
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
+#include "mt4cpp/Handle.hpp"
 
 using boost::asio::ip::udp;
 using namespace mt4cpp;
@@ -19,7 +19,7 @@ struct BoostAdapterInUnix {
 		
 		FD_ZERO(&fileDescriptorSet);
 
-		nativeSocket = sock.native();
+		nativeSocket = sock.native_handle();
 		FD_SET(nativeSocket, &fileDescriptorSet);
 
 		select(nativeSocket + 1, &fileDescriptorSet, NULL, NULL, &timeStruct);

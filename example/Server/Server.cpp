@@ -1,16 +1,15 @@
 #include <iostream>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
 #include "mt4cpp/Reactor.hpp"
 #include "mt4cpp/ThreadManager.hpp"
-#include "example/Server/Handles/HandleZmq.hpp"
 #include "example/Server/EventHandlers/EventHandlerZmq.hpp"
+#include "example/Server/Handles/HandleZmq.hpp"
 
 #ifdef __unix__  
 	#include "example/Server/Handles/HandleBoost.hpp"
 	#include "example/Server/EventHandlers/EventHandlerBoost.hpp"
 #endif
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/ini_parser.hpp>
 
 using namespace mt4cpp;
 

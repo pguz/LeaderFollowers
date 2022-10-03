@@ -1,11 +1,11 @@
 #ifndef THREADMANAGER_HPP_
 #define THREADMANAGER_HPP_
 
-#include "ThreadSet.hpp"
+#include <boost/asio.hpp>
 #include <boost/asio/io_service.hpp>
 #include <boost/bind.hpp>
 #include <boost/thread/thread.hpp>
-#include <boost/asio.hpp>
+#include "ThreadSet.hpp"
 
 namespace mt4cpp {
 	

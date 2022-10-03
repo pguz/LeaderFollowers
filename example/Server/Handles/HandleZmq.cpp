@@ -1,5 +1,6 @@
-#include "HandleZmq.hpp"
 #include <iostream>
+#include <zmq.hpp>
+#include "HandleZmq.hpp"
 
 HandleZmq::HandleZmq(std::string hostAddress, int port)
     : Handle(),
@@ -17,12 +18,16 @@ HandleZmq::~HandleZmq() {
 int HandleZmq::handle(const int timeout) {
      zmq_poll(items_, 1, timeout);
      if (items_[0].revents & ZMQ_POLLIN) {
-		zmq::message_t request;
+		zmq::mutable_buffer request;
 		int t = 10;
 		socket_.setsockopt(ZMQ_RCVTIMEO,&t,sizeof(t));
-		socket_.recv(&request);
+	    zmq::recv_buffer_result_t recv_buffer_size = socket_.recv(request, zmq::recv_flags::none);
 
-		data_ = std::string(static_cast<char*>(request.data()), request.size());
+		if (recv_buffer_size) {
+            data_ = std::string(static_cast<char*>(request.data()), (*recv_buffer_size).size);
+        } else {
+            data_ = std::string();
+        }
 
         return 0;
      }
@@ -36,6 +41,6 @@ std::string HandleZmq::getData() {
 int HandleZmq::sendResponse(std::string response) {
 	zmq::message_t reply (response.size());
 	memcpy ((void *) reply.data (), response.c_str(), response.size());
-	socket_.send (reply);
+	socket_.send (reply, zmq::send_flags::none);
 	return 0;
 }

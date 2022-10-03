@@ -1,5 +1,6 @@
-#include "BoostClient.hpp"
+#include <iostream>
 #include <boost/range/irange.hpp>
+#include "BoostClient.hpp"
 
 BoostClient::BoostClient(
 		std::string client_id, 

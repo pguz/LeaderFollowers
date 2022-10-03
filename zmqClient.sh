@@ -18,7 +18,7 @@ function ctrl_c() {
 pidArr=()
 for ((i = 1; i <= $REQ_PROC; i++))
 do
-    ./example/ZmqClient/client.py $i $HOST_ADDRESS $PORT $REQ_NUM &
+    python3 ./example/ZmqClient/client.py $i $HOST_ADDRESS $PORT $REQ_NUM &
     pidArr+=($!)
 done
 wait
